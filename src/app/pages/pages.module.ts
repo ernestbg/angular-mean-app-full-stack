@@ -9,6 +9,8 @@ import { AppRoutingModule } from '../app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { ComponentsModule } from '../components/components.module';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
+import { PromisesComponent } from './promises/promises.component';
+import { RxjsComponent } from './rxjs/rxjs.component';
 
 
 
@@ -18,7 +20,9 @@ import { AccountSettingsComponent } from './account-settings/account-settings.co
         ProgressComponent,
         Graphic1Component,
         PagesComponent,
-        AccountSettingsComponent
+        AccountSettingsComponent,
+        PromisesComponent,
+        RxjsComponent
     ],
     exports: [
         DashboardComponent,
