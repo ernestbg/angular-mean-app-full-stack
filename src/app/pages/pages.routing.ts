@@ -7,6 +7,7 @@ import { ProgressComponent } from './progress/progress.component';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
 import { PromisesComponent } from './promises/promises.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
+import { AuthGuard } from '../guards/auth.guard';
 
 
 
@@ -14,6 +15,7 @@ const routes: Routes = [
     {
         path: 'dashboard',
         component: PagesComponent,
+        canActivate: [AuthGuard],
         children: [
             { path: '', component: DashboardComponent, data: { title: 'Dashboard' } },
             { path: 'graphic1', component: Graphic1Component, data: { title: 'Graphics' } },
