@@ -6,11 +6,12 @@ import { Graphic1Component } from './graphic1/graphic1.component';
 import { PagesComponent } from './pages.component';
 import { SharedModule } from "../shared/shared.module";
 import { AppRoutingModule } from '../app-routing.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ComponentsModule } from '../components/components.module';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
 import { PromisesComponent } from './promises/promises.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 
@@ -22,7 +23,8 @@ import { RxjsComponent } from './rxjs/rxjs.component';
         PagesComponent,
         AccountSettingsComponent,
         PromisesComponent,
-        RxjsComponent
+        RxjsComponent,
+        ProfileComponent
     ],
     exports: [
         DashboardComponent,
@@ -37,6 +39,7 @@ import { RxjsComponent } from './rxjs/rxjs.component';
         AppRoutingModule,
         FormsModule,
         ComponentsModule,
+        ReactiveFormsModule
     ]
 })
 export class PagesModule { }
