@@ -10,8 +10,7 @@ export class FileUploadService {
 
   constructor() { }
 
-  async updateImg(file: File, type: 'users' | 'playlists', id: string) {
-
+  async updateImg(file: File, type: 'users' | 'playlists' | 'songs', id: string) {
     try {
       const url = `${base_url}/upload/${type}/${id}`;
       const formData = new FormData();
@@ -23,13 +22,15 @@ export class FileUploadService {
         },
         body: formData
       });
+      console.log(resp)
       const data = await resp.json();
       if (data.ok) {
-        data.name
+        return data.name
+        
       } else {
+        console.log(data.msg);
         return false;
       }
-
     } catch (error) {
       return false;
     }

@@ -1,0 +1,64 @@
+<div class="row animated fadeIn fast">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <input type="text" class="form-control" placeholder="Search user">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row animated fadeIn fast">
+    <div class="col-12">
+        <div class="alert alert-info text-center">
+            <h4 class="alert-heading">loading...</h4>
+            <p class="fa fa-spin fa-refresh fa-2x"></p>
+            <p class="mb-0">Please wait</p>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Users</h4>
+                <h6 class="card-subtitle">Add<code>.table-bordered</code>for borders on all sides of the table and
+                    cells.
+                </h6>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Img</th>
+                                <th>Email</th>
+                                <th>Name</th>
+                                <th>Role</th>
+                                <th>Auth</th>
+                                <th class="text-nowrap">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Lunar probe project</td>
+                                <td>Lunar probe project</td>
+                                <td>Lunar probe project</td>
+                                <td>Lunar probe project</td>
+                                <td>Lunar probe project</td>
+                                
+                                <td class="text-nowrap">
+                                    <a href="#" data-toggle="tooltip" data-original-title="Edit"> <i
+                                            class="fa fa-pencil text-inverse m-r-10"></i> Edit</a>
+                                    <a href="#" data-toggle="tooltip" data-original-title="Close"> <i
+                                            class="fa fa-close text-danger"></i> Delete</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <button class="btn-secondary">Previous</button>
+                &nbsp;
+                <button class="btn-secondary">Next</button>
+            </div>
+        </div>
+    </div>
+</div>

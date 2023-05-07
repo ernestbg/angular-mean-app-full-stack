@@ -15,11 +15,9 @@ export class HeaderComponent {
 
   constructor(private userService: UserService) {
     this.user = userService.user;
-    console.log(this.user?.email)
   }
 
   logout() {
     this.userService.logout();
   }
-
 }

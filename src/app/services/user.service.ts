@@ -7,6 +7,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 import { Router } from '@angular/router';
 import { User } from '../models/user.model';
+import { LoadUser } from '../interfaces/load-users.interface';
 
 
 declare const google: any;
@@ -19,7 +20,7 @@ export class UserService {
 
   constructor(private http: HttpClient, private router: Router) { }
 
-  public user: User | undefined;
+  public user: User;
 
   get token(): string {
     return localStorage.getItem('token') || '';
@@ -29,19 +30,22 @@ export class UserService {
     return this.user?.uid || '';
   }
 
-  public validateToken(): Observable<boolean> {
+  get headers() {
+    return {
+      headers: {
+        'x-token': this.token
+      }
+    }
+  }
 
+  public validateToken(): Observable<boolean> {
     google.accounts.id.initialize({
       client_id:
         '161592380144-mtpedk748esp6229vqt7egmo7p097bkb.apps.googleusercontent.com',
     });
 
 
-    return this.http.get(`${base_url}/login/renew`, {
-      headers: {
-        'x-token': this.token
-      }
-    }).pipe(
+    return this.http.get(`${base_url}/login/renew`, this.headers).pipe(
       map((resp: any) => {
         const { name, email, img, role, google, uid } = resp.user;
         this.user = new User(name, email, '', img, role, google, uid);
@@ -63,19 +67,12 @@ export class UserService {
       );
   }
 
-
-
-  updateProfile(data: { email: string, name: string, role: string | undefined }) {
-
+  updateProfile(data: { email: string, name: string, role: string }) {
     data = {
       ...data,
-      role: this.user?.role
+      role: this.user.role
     }
-    return this.http.put(`${base_url}/users/${this.uid}`, data, {
-      headers: {
-        'x-token': this.token
-      }
-    });
+    return this.http.put(`${base_url}/users/${this.uid}`, data, this.headers);
   }
 
   login(formData: LoginForm) {
@@ -98,6 +95,31 @@ export class UserService {
     localStorage.removeItem('token');
     google.accounts.id.revoke('ernesto57580@gmail.com', () => {
       this.router.navigateByUrl('/login');
-    })
+    });
+  }
+
+  loadUsers(from: number = 0) {
+    const url = (`${base_url}/users?from=${from}`);
+    return this.http.get<LoadUser>(url, this.headers)
+      .pipe(
+        map(resp => {
+          const users = resp.users.map(
+            user => new User(user.name, user.email, null, user.img, user.role, user.google, user.uid)
+          );
+          return {
+            total: resp.total,
+            users
+          };
+        })
+      );
+  }
+
+  saveUser(user: User) {
+    return this.http.put(`${base_url}/users/${user.uid}`, user, this.headers);
+  }
+
+  deleteUser(user: User) {
+    const url = (`${base_url}/users/${user.uid}`);
+    return this.http.delete(url, this.headers)
   }
 }

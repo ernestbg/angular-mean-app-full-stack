@@ -19,7 +19,7 @@ export class BreadcrumbsComponent implements OnDestroy {
     
     this.titleSubs = this.getRouteArguments().subscribe(({ title }) => {
       this.title = title;
-      document.title = `Admin pro-${title}`;
+      document.title = `DB Music-${title}`;
     });
 
 
