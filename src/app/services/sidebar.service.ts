@@ -26,6 +26,7 @@ export class SidebarService {
         { title: 'Main', url: '/' },
         { title: 'Users', url: 'users' },
         { title: 'Playlists', url: 'playlists' },
+        { title: 'Songs', url: 'songs' }
       ]
     }
   ]

@@ -29,12 +29,12 @@
                     <table class="table table-bordered">
                         <thead>
                             <tr>
-                                <th>Img</th>
+                                <th class="w100">Img</th>
                                 <th>Email</th>
                                 <th>Name</th>
                                 <th>Role</th>
                                 <th>Auth</th>
-                                <th class="text-nowrap">Actions</th>
+                                <th class="text-nowrap w100">Actions</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -45,7 +45,7 @@
                                 <td>Lunar probe project</td>
                                 <td>Lunar probe project</td>
                                 
-                                <td class="text-nowrap">
+                                <td class="text-nowrap text-center">
                                     <a href="#" data-toggle="tooltip" data-original-title="Edit"> <i
                                             class="fa fa-pencil text-inverse m-r-10"></i> Edit</a>
                                     <a href="#" data-toggle="tooltip" data-original-title="Close"> <i

@@ -41,7 +41,7 @@
                         <tbody>
                             <tr *ngFor="let user of users">
                                 <td class="text-center">
-                                    <img [src]="user.imageUrl" alt="" class="imgProfileTable cursor" (click)="openModal(user)">
+                                    <img [src]="user.imageUrl" alt="" class="imgTable cursor" (click)="openModal(user)">
                                 </td>
                                 <td>{{user.email}}</td>
                                 <td>{{user.name}}</td>

@@ -1,6 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { delay } from 'rxjs/operators';
 import { User } from 'src/app/models/user.model';
 import { ModalImgService } from 'src/app/services/modal-img.service';
 import { SearchesService } from 'src/app/services/searches.service';
@@ -23,9 +22,11 @@ export class UsersComponent implements OnInit, OnDestroy {
   public loading: boolean;
   public imgSubs: Subscription;
 
-  constructor(private userService: UserService,
+  constructor(
+    private userService: UserService,
     private searchesService: SearchesService,
-    private modalImgService: ModalImgService) { }
+    private modalImgService: ModalImgService
+  ) { }
 
 
   ngOnInit(): void {
@@ -63,7 +64,7 @@ export class UsersComponent implements OnInit, OnDestroy {
       return this.users = this.usersTemp;
     }
     this.searchesService.search('users', term)
-      .subscribe(resp => this.users = resp)
+      .subscribe((resp: User[] | any[]) => this.users = resp);
   }
 
   deleteUser(user: User) {

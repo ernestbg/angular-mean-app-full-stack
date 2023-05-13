@@ -13,6 +13,10 @@ import { PromisesComponent } from './promises/promises.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
 import { ProfileComponent } from './profile/profile.component';
 import { UsersComponent } from './maintenances/users/users.component';
+import { PlaylistsComponent } from './maintenances/playlists/playlists.component';
+import { SongsComponent } from './maintenances/songs/songs.component';
+import { PipesModule } from '../pipes/pipes.module';
+import { SongComponent } from './maintenances/songs/song.component';
 
 
 
@@ -26,7 +30,10 @@ import { UsersComponent } from './maintenances/users/users.component';
         PromisesComponent,
         RxjsComponent,
         ProfileComponent,
-        UsersComponent
+        UsersComponent,
+        PlaylistsComponent,
+        SongsComponent,
+        SongComponent
     ],
     exports: [
         DashboardComponent,
@@ -41,7 +48,8 @@ import { UsersComponent } from './maintenances/users/users.component';
         AppRoutingModule,
         FormsModule,
         ComponentsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        PipesModule
     ]
 })
 export class PagesModule { }

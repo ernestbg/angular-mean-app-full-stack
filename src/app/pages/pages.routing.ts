@@ -10,6 +10,9 @@ import { RxjsComponent } from './rxjs/rxjs.component';
 import { AuthGuard } from '../guards/auth.guard';
 import { ProfileComponent } from './profile/profile.component';
 import { UsersComponent } from './maintenances/users/users.component';
+import { PlaylistsComponent } from './maintenances/playlists/playlists.component';
+import { SongsComponent } from './maintenances/songs/songs.component';
+import { SongComponent } from './maintenances/songs/song.component';
 
 
 
@@ -28,7 +31,10 @@ const routes: Routes = [
             { path: 'profile', component: ProfileComponent, data: { title: 'Profile' } },
 
             // Maintenances
-            { path: 'users', component: UsersComponent, data: { title: 'Users' } }
+            { path: 'users', component: UsersComponent, data: { title: 'Users' } },
+            { path: 'playlists', component: PlaylistsComponent, data: { title: 'Playlists' } },
+            { path: 'songs', component: SongsComponent, data: { title: 'Songs' } },
+            { path: 'song/:id', component: SongComponent, data: { title: 'Songs' } }
         ]
     }
 ];
