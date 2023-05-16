@@ -10,6 +10,17 @@ export class AuthGuard {
 
   constructor(private userService: UserService, private router: Router) { }
 
+
+  canLoad(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+    return this.userService.validateToken()
+      .pipe(
+        tap(isAuthenticated => {
+          if (!isAuthenticated) {
+            this.router.navigateByUrl('/login');
+          }
+        })
+      );
+  }
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     return this.userService.validateToken()
       .pipe(
