@@ -10,15 +10,13 @@ export class User {
         public email: string,
         public password?: string,
         public img?: string,
-        public role?: string,
+        public role?: 'ADMIN_ROLE' | 'USER_ROLE',
         public google?: boolean,
         public uid?: string
     ) { }
 
-
     get imageUrl() {
         //upload/users/6446d9c7c42298892ff9f0d8
-
         if (!this.img) {
             return `${base_url}/upload/users/no-img`;
         } else if (this.img?.includes('https')) {

@@ -1,0 +1,82 @@
+<div class="row animated fadeIn fast">
+    <div class="col-4">
+        <div class="card">
+            <div class="card-body">
+                <h3>Users</h3>
+                <div class="alert alert-info" *ngIf="users.length === 0">
+                    <p class="mb-0">No users</p>
+                </div>
+                <div class="table-responsive" *ngIf="users.length > 0">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Img</th>
+                                <th>Username</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let user of users" class="row animated fadeIn fast">
+                                <img [src]="user.img | image:'users'" alt="" class="w100">
+                                <td>{{user.name}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="card">
+            <div class="card-body">
+                <h3>Songs</h3>
+                <div class="alert alert-info" *ngIf="users.length === 0">
+                    <p class="mb-0">No songs</p>
+                </div>
+                <div class="table-responsive" *ngIf="users.length > 0">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Img</th>
+                                <th>Username</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let song of songs" class="row animated fadeIn fast">
+                                <img [src]="song.img | image:'songs'" alt="" class="w100">
+                                <td>
+                                    <a [routerLink]="['/dashboard/song', song._id]">{{song.name}}</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="card">
+            <div class="card-body">
+                <h3>Playlists</h3>
+                <div class="alert alert-info" *ngIf="users.length === 0">
+                    <p class="mb-0">No playlists</p>
+                </div>
+                <div class="table-responsive" *ngIf="users.length > 0">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Img</th>
+                                <th>Username</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let playlist of playlists" class="row animated fadeIn fast">
+                                <img [src]="playlist.img | image:'playlists'" alt="" class="w100">
+                                <td>{{playlist.name}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

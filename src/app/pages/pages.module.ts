@@ -17,6 +17,7 @@ import { PlaylistsComponent } from './maintenances/playlists/playlists.component
 import { SongsComponent } from './maintenances/songs/songs.component';
 import { PipesModule } from '../pipes/pipes.module';
 import { SongComponent } from './maintenances/songs/song.component';
+import { SearchComponent } from './search/search.component';
 
 
 
@@ -33,7 +34,8 @@ import { SongComponent } from './maintenances/songs/song.component';
         UsersComponent,
         PlaylistsComponent,
         SongsComponent,
-        SongComponent
+        SongComponent,
+        SearchComponent
     ],
     exports: [
         DashboardComponent,

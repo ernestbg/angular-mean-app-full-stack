@@ -13,6 +13,8 @@ import { UsersComponent } from './maintenances/users/users.component';
 import { PlaylistsComponent } from './maintenances/playlists/playlists.component';
 import { SongsComponent } from './maintenances/songs/songs.component';
 import { SongComponent } from './maintenances/songs/song.component';
+import { SearchComponent } from './search/search.component';
+import { AdminGuard } from '../guards/admin.guard';
 
 
 
@@ -29,12 +31,15 @@ const routes: Routes = [
             { path: 'promises', component: PromisesComponent, data: { title: 'Promises' } },
             { path: 'rxjs', component: RxjsComponent, data: { title: 'Rxjs' } },
             { path: 'profile', component: ProfileComponent, data: { title: 'Profile' } },
+            { path: 'search/:term', component: SearchComponent, data: { title: 'Search' } },
 
             // Maintenances
-            { path: 'users', component: UsersComponent, data: { title: 'Users' } },
             { path: 'playlists', component: PlaylistsComponent, data: { title: 'Playlists' } },
             { path: 'songs', component: SongsComponent, data: { title: 'Songs' } },
-            { path: 'song/:id', component: SongComponent, data: { title: 'Songs' } }
+            { path: 'song/:id', component: SongComponent, data: { title: 'Songs' } },
+
+            // Admin routes
+            { path: 'users', canActivate: [AdminGuard], component: UsersComponent, data: { title: 'Users' } }
         ]
     }
 ];

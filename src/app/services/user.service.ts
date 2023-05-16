@@ -30,6 +30,10 @@ export class UserService {
     return this.user?.uid || '';
   }
 
+  get role(): 'ADMIN_ROLE' | 'USER_ROLE' {
+    return this.user.role;
+  }
+
   get headers() {
     return {
       headers: {
@@ -38,31 +42,32 @@ export class UserService {
     }
   }
 
+  saveLocalStorage(token: string, menu: any) {
+    localStorage.setItem('token', token);
+    localStorage.setItem('menu', JSON.stringify(menu));
+  }
+
   public validateToken(): Observable<boolean> {
     google.accounts.id.initialize({
       client_id:
         '161592380144-mtpedk748esp6229vqt7egmo7p097bkb.apps.googleusercontent.com',
     });
-
-
     return this.http.get(`${base_url}/login/renew`, this.headers).pipe(
       map((resp: any) => {
         const { name, email, img, role, google, uid } = resp.user;
         this.user = new User(name, email, '', img, role, google, uid);
-        localStorage.setItem('token', resp.token);
+        this.saveLocalStorage(resp.token, resp.menu);
         return true;
       }),
-
       catchError(error => of(false))
     );
-
   }
 
   createUser(formData: RegisterForm) {
     return this.http.post(`${base_url}/users`, formData)
       .pipe(
         tap((resp: any) => {
-          localStorage.setItem('token', resp.token);
+          this.saveLocalStorage(resp.token, resp.menu);
         })
       );
   }
@@ -79,7 +84,7 @@ export class UserService {
     return this.http.post(`${base_url}/login`, formData)
       .pipe(
         tap((resp: any) => {
-          localStorage.setItem('token', resp.token);
+          this.saveLocalStorage(resp.token, resp.menu);
         })
       );
   }
@@ -87,12 +92,15 @@ export class UserService {
   loginGoogle(token: string) {
     return this.http.post(`${base_url}/login/google`, { token })
       .pipe(
-        tap((resp: any) => { localStorage.setItem('token', resp.token); })
+        tap((resp: any) => {
+          this.saveLocalStorage(resp.token, resp.menu);
+        })
       );
   }
 
   logout() {
     localStorage.removeItem('token');
+    localStorage.removeItem('menu');
     google.accounts.id.revoke('ernesto57580@gmail.com', () => {
       this.router.navigateByUrl('/login');
     });
