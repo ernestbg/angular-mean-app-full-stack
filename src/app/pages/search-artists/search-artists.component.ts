@@ -1,14 +1,17 @@
-import { Component, Output } from '@angular/core';
+import { Component, Input, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { Artist } from 'src/app/models/artists.model';
 import { ApiSpotifyService } from 'src/app/services/api-spotify.service';
 
-
 @Component({
-  selector: 'app-search-artists',
+  selector: 'app-artist',
   templateUrl: './search-artists.component.html',
-  styleUrls: ['./search-artists.component.css']
+  styleUrls: [
+    './search-artists.component.css'
+  ]
 })
-export class SearchArtistsComponent {
+export class ArtistComponent {
+
   public artists: Artist[] = [];
 
   private _timeWaitSearch: any;
@@ -42,4 +45,6 @@ export class SearchArtistsComponent {
     }, 500);
 
   }
+
+
 }

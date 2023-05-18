@@ -12,9 +12,9 @@ import { AccountSettingsComponent } from './account-settings/account-settings.co
 import { PromisesComponent } from './promises/promises.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
 import { ProfileComponent } from './profile/profile.component';
-import { UsersComponent } from './maintenances/users/users.component';
+import { UsersComponent } from './maintenances//users/users.component';
 import { PlaylistsComponent } from './maintenances/playlists/playlists.component';
-import { SongsComponent } from './maintenances/songs/songs.component';
+import { SongsComponent } from './maintenances//songs/songs.component';
 import { PipesModule } from '../pipes/pipes.module';
 import { SongComponent } from './maintenances/songs/song.component';
 import { SearchComponent } from './search/search.component';
@@ -37,7 +37,7 @@ import { ArtistComponent } from './maintenances/artist/artist.component';
         SongsComponent,
         SongComponent,
         SearchComponent,
-        ArtistComponent
+        ArtistComponent,
     ],
     exports: [
         DashboardComponent,
