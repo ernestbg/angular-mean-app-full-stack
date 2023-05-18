@@ -3,8 +3,7 @@
     <app-header></app-header>
     <app-sidebar></app-sidebar>
     <div class="page-wrapper">
-        <div class="container-fluid">
-            <app-breadcrumbs></app-breadcrumbs>
+        <div class="container-fluid" >
             <router-outlet></router-outlet>     
             <!-- Start Page Content -->
             <!-- ============================================================== -->
@@ -19,16 +18,21 @@
             </div> -->
             <!-- ============================================================== -->
             <!-- End PAge Content -->
+
             <!-- footer -->
             <!-- ============================================================== -->
-            <footer class="footer">
+            <!-- <footer class="footer">
                 © {{year}} DB music
-            </footer>
+            </footer> -->
             <!-- ============================================================== -->
             <!-- End footer -->
             <!-- ============================================================== -->
+
+            <app-audio-player></app-audio-player>
         </div>
+        
     </div>
+    
 </div>
 
 <app-modal-image></app-modal-image>

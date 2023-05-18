@@ -1,4 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
+
+
+html {
+    min-height: 100%;
+    position: relative;
+}
+
+body {
+    margin: 0;
+    margin-bottom: 40px;
+}
+
 .fast {
     -webkit-animation-duration: 0.3s;
     animation-duration: 0.3s;
@@ -19,6 +31,7 @@
 .w100 {
     width: 100px;
 }
+
 .w140 {
     width: 140px;
 }
@@ -28,11 +41,11 @@
     width: 40px;
 }
 
-.hidden{
+.hidden {
     display: none;
 }
 
-.background-modal-img{
+.background-modal-img {
     background-color: rgba(0, 0, 0, 0.4);
     position: fixed;
     top: 0px;
@@ -41,4 +54,14 @@
     height: 100%;
     z-index: 9999;
 
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
 }

@@ -18,6 +18,7 @@ import { SongsComponent } from './maintenances/songs/songs.component';
 import { PipesModule } from '../pipes/pipes.module';
 import { SongComponent } from './maintenances/songs/song.component';
 import { SearchComponent } from './search/search.component';
+import { ArtistComponent } from './maintenances/artist/artist.component';
 
 
 
@@ -35,14 +36,15 @@ import { SearchComponent } from './search/search.component';
         PlaylistsComponent,
         SongsComponent,
         SongComponent,
-        SearchComponent
+        SearchComponent,
+        ArtistComponent
     ],
     exports: [
         DashboardComponent,
         ProgressComponent,
         Graphic1Component,
         PagesComponent,
-        AccountSettingsComponent
+        AccountSettingsComponent,
     ],
     imports: [
         CommonModule,

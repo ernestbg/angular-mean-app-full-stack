@@ -933,7 +933,7 @@ Layouts
 
 .fix-width {
   width: 100%;
-  max-width: 1170px;
+  
   margin: 0 auto;
 }
 
@@ -954,8 +954,6 @@ Main sidebar
   z-index: 20;
   padding-top: 70px;
   background: #fff;
-  -webkit-box-shadow: 1px 0px 20px rgba(0, 0, 0, 0.08);
-  box-shadow: 1px 0px 20px rgba(0, 0, 0, 0.08);
 }
 
 .fix-sidebar .left-sidebar {
@@ -1290,7 +1288,7 @@ File: scss
 }
 
 .page-wrapper {
-  background: #f4f6f9;
+  background: #212121;
   padding-bottom: 60px;
   position: relative;
 }

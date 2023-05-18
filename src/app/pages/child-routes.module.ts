@@ -13,10 +13,12 @@ import { SongComponent } from './maintenances/songs/song.component';
 import { SearchComponent } from './search/search.component';
 import { AdminGuard } from '../guards/admin.guard';
 import { RouterModule, Routes } from '@angular/router';
+import { SpotifyGuardGuard } from '../guards/spotify-guard.guard';
+import { ArtistComponent } from './maintenances/artist/artist.component';
 
 
 const childRoutes: Routes = [
-  { path: '', component: DashboardComponent, data: { title: 'Dashboard' } },
+  { path: '' ,component: DashboardComponent, data: { title: 'Dashboard' } },
   { path: 'graphic1', component: Graphic1Component, data: { title: 'Graphics' } },
   { path: 'progress', component: ProgressComponent, data: { title: 'Progress' } },
   { path: 'account-settings', component: AccountSettingsComponent, data: { title: 'Themes' } },
@@ -29,6 +31,7 @@ const childRoutes: Routes = [
   { path: 'playlists', component: PlaylistsComponent, data: { title: 'Playlists' } },
   { path: 'songs', component: SongsComponent, data: { title: 'Songs' } },
   { path: 'song/:id', component: SongComponent, data: { title: 'Songs' } },
+  { path: 'artists', component: ArtistComponent, data: { title: 'Artists' } },
 
   // Admin routes
   { path: 'users', canActivate: [AdminGuard], component: UsersComponent, data: { title: 'Users' } }
