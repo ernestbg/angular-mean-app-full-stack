@@ -2,20 +2,33 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <input type="text" class="form-control" placeholder="Search user" #termTxt (keyup)="search(termTxt.value)">
+                <input type="text" class="form-control" placeholder="Search user" #termTxt
+                    (keyup)="search(termTxt.value)">
             </div>
         </div>
     </div>
 </div>
 <div class="row animated fadeIn fast" *ngIf="loading">
     <div class="col-12">
-        <div class="alert alert-info text-center">
-            <h4 class="alert-heading">loading...</h4>
-            <p class="fa fa-spin fa-refresh fa-2x"></p>
-            <p class="mb-0">Please wait</p>
+        <div class="text-center">
+            <div class="lds-spinner">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
         </div>
     </div>
 </div>
+
 <div class="row" *ngIf="!loading">
     <div class="col-12">
         <div class="card">
@@ -58,10 +71,11 @@
                                         [(ngModel)]="playlist.name">
                                 </td>
                                 <td class="text-nowrap">
-                                    <a (click)="saveChanges(playlist)" data-toggle="tooltip" data-original-title="Edit"> <i
-                                            class="fa fa-pencil text-inverse m-r-10 cursor"></i> Edit</a>
-                                    <a (click)="deletePlaylist(playlist)" data-toggle="tooltip" data-original-title="Close"> <i
-                                            class="fa fa-close text-danger cursor"></i> Delete</a>
+                                    <a (click)="saveChanges(playlist)" data-toggle="tooltip" data-original-title="Edit">
+                                        <i class="fa fa-pencil text-inverse m-r-10 cursor"></i> Edit</a>
+                                    <a (click)="deletePlaylist(playlist)" data-toggle="tooltip"
+                                        data-original-title="Close"> <i class="fa fa-close text-danger cursor"></i>
+                                        Delete</a>
                                 </td>
                             </tr>
                         </tbody>

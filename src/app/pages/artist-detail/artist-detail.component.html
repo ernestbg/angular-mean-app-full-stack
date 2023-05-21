@@ -1,0 +1,47 @@
+<div class="row containerArtist" >
+    <!-- column -->
+    <div class="col-lg-3 col-md-6">
+        <!-- Card -->
+        <div class="card">
+            <img class="card-img-top img-responsive" [src]="artist.images[0].url" alt="Card image cap">
+
+        </div>
+        <!-- Card -->
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <!-- Card -->
+        <div class="card">
+            <p>{{artist.name}}</p>
+            <p>hola</p>
+            <p>hola</p>
+
+        </div>
+        <!-- Card -->
+    </div>
+
+</div>
+
+<div class="row el-element-overlay">
+    <div class="col-lg-3 col-md-6 animated fadeIn fast" *ngFor="let album of albums">
+        <div class="card cardArtist">
+            <div class="el-card-item">
+                <div class="el-card-avatar el-overlay-1 cardArtistAvatar"> <img [src]="album.images[0].url"
+                        alt="user" />
+                    <div class="el-overlay">
+                        <ul class="el-info">
+                            <li>
+                                <a class="btn default btn-outline image-popup-vertical-fit" (click)="goAlbumDetail(album.id)">
+                                    <i class="fa fa-play"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="el-card-content">
+                    <h3 class="box-title">{{album.name}}</h3> <small>{{album.name}}</small>
+                    <br />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

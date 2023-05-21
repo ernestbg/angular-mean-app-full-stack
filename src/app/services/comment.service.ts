@@ -1,5 +1,5 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environments';
 
@@ -8,7 +8,7 @@ const base_url = environment.base_url;
 @Injectable({
   providedIn: 'root'
 })
-export class PlaylistService {
+export class CommentService {
 
   constructor(private http: HttpClient) { }
 
@@ -24,27 +24,28 @@ export class PlaylistService {
     }
   }
 
-  loadPlaylists() {
-    const url = (`${base_url}/playlists`);
+  loadComments() {
+    const url = (`${base_url}/comments`);
     return this.http.get(url, this.headers)
       .pipe(
-        map( (resp: any) => resp.playlists)
+        map( (resp: any) => resp.comments)
       );
   }
 
-  createPlaylist(name:string) {
-    const url = (`${base_url}/playlists`);
+  createComment(name:string) {
+    const url = (`${base_url}/comments`);
     return this.http.post(url, {name}, this.headers);   
   }
 
-  updatePlaylist( _id:string, name:string) {
-    const url = (`${base_url}/playlists/${_id}`);
+  updateComment( _id:string, name:string) {
+    const url = (`${base_url}/comments/${_id}`);
     console.log(url);
     return this.http.put(url, {name}, this.headers);   
   }
 
-  deletePlaylist( _id:string) {
-    const url = (`${base_url}/playlists/${_id}`);
+  deleteComment( _id:string) {
+    const url = (`${base_url}/comments/${_id}`);
     return this.http.delete(url, this.headers);  
   }
+
 }

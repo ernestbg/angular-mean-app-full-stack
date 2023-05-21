@@ -1,0 +1,70 @@
+<div class="row containerArtist">
+    <div class="col-lg-3 col-md-6">
+        <div class="card">
+            <img class="card-img-top img-responsive" [src]="album.images[0].url" alt="Card image cap">
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="card">
+            <p>{{album.name}}</p>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <!-- Table -->
+    <div class="card width">
+        <div class="card-body">
+            <div class="bootstrap-table">
+                <div class="fixed-table-toolbar"></div>
+                <div class="fixed-table-container" style="padding-bottom: 0px;">
+                    <div class="fixed-table-body">
+                        <table id="smptable" class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <div class="th-inner">#</div>
+                                        <div class="fht-cell"></div>
+                                    </th>
+                                    <th>
+                                        <div class="th-inner">Title</div>
+                                        <div class="fht-cell"></div>
+                                    </th>
+                                    <th>
+                                        <div class="th-inner">Duration</div>
+                                        <div class="fht-cell"></div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr data-index="0" *ngFor="let item of items">
+                                    <td>{{item.track_number}}</td>
+                                    <td>{{item.name}}</td>
+                                    <td>{{convertMStoMMSS(item.duration_ms)}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="fixed-table-footer" style="display: none;">
+                        <table>
+                            <tbody>
+                                <tr></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div id="comment-box">
+    <textarea id="comment-input" class="form-control" placeholder="Escribe tu comentario"
+        [(ngModel)]="review"></textarea>
+    <button id="submit-button" (click)="submitReview()">Enviar</button>
+</div>

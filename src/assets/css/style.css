@@ -67,12 +67,13 @@ Global Styles
 }
 
 body {
-  background: #fff;
+  background: #000000;
   font-family: "Source Sans Pro", sans-serif;
   margin: 0;
   overflow-x: hidden;
-  color: #67757c;
+  color: #ffffff;
   font-weight: 300;
+  
 }
 
 html {
@@ -121,7 +122,7 @@ h3,
 h4,
 h5,
 h6 {
-  color: #455a64;
+  color: #ffffff;
   font-family: "Source Sans Pro", sans-serif;
   font-weight: 400;
 }
@@ -1288,13 +1289,16 @@ File: scss
 }
 
 .page-wrapper {
-  background: #212121;
-  padding-bottom: 60px;
   position: relative;
+  height: 100%;
+  background-color: black;
+  padding: 100px 25px;
 }
 
 .container-fluid {
   padding: 25px 25px;
+  height: 100%;
+ 
 }
 
 .card {
@@ -5162,7 +5166,7 @@ Table Cell
 }
 
 .table-hover tbody tr:hover {
-  background: #e9edf2;
+  background: #828282;
 }
 
 .nowrap {

@@ -5,15 +5,12 @@
     <div class="scroll-sidebar">
         <!-- Sidebar navigation-->
         <nav class="sidebar-nav">
-            <ul id="sidebarnav">              
-                <li class="nav-devider"></li>
+            <ul id="sidebarnav">
+                <br>
                 <li *ngFor="let item of sidebarService.menu">
                     <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
                         <i [class]="item.icon"></i>
                         <span class="hide-menu">{{item.title}}
-                            <span class="label label-rouded label-themecolor pull-right">
-                                {{item.submenu.length}}
-                            </span>
                         </span>
                     </a>
                     <ul aria-expanded="false" class="collapse">
@@ -21,7 +18,6 @@
                             <a [routerLink]="subItem.url" routerLinkActive="active"
                                 [routerLinkActiveOptions]="{exact:true}">{{subItem.title}}</a>
                         </li>
-
                     </ul>
                 </li>
 

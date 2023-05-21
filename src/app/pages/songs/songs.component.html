@@ -2,17 +2,29 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <input type="text" class="form-control" placeholder="Search song" #txtTerm (keyup)="search(txtTerm.value)">
+                <input type="text" class="form-control" placeholder="Search song" #txtTerm
+                    (keyup)="search(txtTerm.value)">
             </div>
         </div>
     </div>
 </div>
 <div class="row animated fadeIn fast" *ngIf="loading">
     <div class="col-12">
-        <div class="alert alert-info text-center">
-            <h4 class="alert-heading">loading...</h4>
-            <p class="fa fa-spin fa-refresh fa-2x"></p>
-            <p class="mb-0">Please wait</p>
+        <div class="text-center">
+            <div class="lds-spinner">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
         </div>
     </div>
 </div>
@@ -25,7 +37,8 @@
                 <div class="row">
                     <div class="col-8">
                         <h4 class="card-title">Songs ({{songs.length}})</h4>
-                        <h6 class="card-subtitle">Add<code>.table-bordered</code>for borders on all sides of the table and
+                        <h6 class="card-subtitle">Add<code>.table-bordered</code>for borders on all sides of the table
+                            and
                             cells.
                         </h6>
                     </div>
@@ -37,7 +50,7 @@
                         </div>
                     </div>
                 </div>
-                
+
 
                 <div class="table-responsive">
                     <table class="table table-bordered">
@@ -51,16 +64,18 @@
                         <tbody>
                             <tr *ngFor="let song of songs">
                                 <td class="text-center">
-                                    <img [src]="song.img | image: 'songs'" [alt]="song.name"
-                                        class="imgTable cursor" (click)="openModal(song)">
+                                    <img [src]="song.img | image: 'songs'" [alt]="song.name" class="imgTable cursor"
+                                        (click)="openModal(song)">
                                 </td>
                                 <td>
-                                   {{song.name}}
-                                </td>                        
+                                    {{song.name}}
+                                </td>
                                 <td class="text-nowrap text-center">
-                                    <a [routerLink]="['/dashboard/song', song._id]" data-toggle="tooltip" data-original-title="Edit"> <i
-                                            class="fa fa-pencil text-inverse m-r-10"></i> Edit</a>
-                                    <a class="cursor" data-toggle="tooltip" data-original-title="Close" (click)="deleteSong(song)"> 
+                                    <a [routerLink]="['/dashboard/song', song._id]" data-toggle="tooltip"
+                                        data-original-title="Edit"> <i class="fa fa-pencil text-inverse m-r-10"></i>
+                                        Edit</a>
+                                    <a class="cursor" data-toggle="tooltip" data-original-title="Close"
+                                        (click)="deleteSong(song)">
                                         <i class="fa fa-close text-danger"></i> Delete
                                     </a>
                                 </td>

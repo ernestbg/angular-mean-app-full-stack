@@ -1,12 +1,12 @@
 <div class="container">
-    <!-- <mat-toolbar color="primary" class="main-toolbar">
+     <!-- <mat-toolbar color="primary" class="main-toolbar">
         <span>Audio Player</span>
-    </mat-toolbar> -->
+    </mat-toolbar>
     <div class="content">
-        <!-- <div class="logo">
+         <div class="logo">
             <mat-icon>music_note</mat-icon>
             <div>Audio Player</div>
-        </div> -->
+        </div> 
         <mat-list color="primary">
             <h3 mat-subheader>Songs</h3>
             <mat-list-item *ngFor="let file of files; let i = index" (click)="openFile(file, i)">
@@ -18,9 +18,9 @@
                 <mat-divider></mat-divider>
             </mat-list-item>
         </mat-list>
-    </div>
+    </div> -->
     <div class="media-footer">
-        <mat-toolbar color="primary">
+        <mat-toolbar class="toolbar-audio">
             <mat-toolbar-row>
                 {{ state?.readableCurrentTime }}
                 <mat-slider class="time-slider" min="0" [max]="state?.duration" step="1" value="state?.currentTime"

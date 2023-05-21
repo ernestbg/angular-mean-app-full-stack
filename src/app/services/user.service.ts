@@ -85,6 +85,7 @@ export class UserService {
       .pipe(
         tap((resp: any) => {
           this.saveLocalStorage(resp.token, resp.menu);
+          localStorage.setItem('uid', resp.uid);
         })
       );
   }
@@ -101,9 +102,10 @@ export class UserService {
   logout() {
     localStorage.removeItem('token');
     localStorage.removeItem('menu');
-    google.accounts.id.revoke('ernesto57580@gmail.com', () => {
+    google.accounts.id.revoke(this.user.email, () => {
       this.router.navigateByUrl('/login');
     });
+    this.router.navigateByUrl('/login');
   }
 
   loadUsers(from: number = 0) {

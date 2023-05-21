@@ -1,4 +1,12 @@
+.toolbar-audio {
+    background-color: #212121;
+    color: white;
+    height: 100px;
+}
+
 .container {
+    height: 10000px;
+
     .main-toolbar {
         .spacer {
             flex: 1 1 auto;
@@ -6,18 +14,15 @@
 
         .toolbar-btn {
             font-size: 16px;
-            
             cursor: pointer;
         }
     }
 
     .content {
         .logo {
-           
             text-align: center;
             font-size: 24px;
             color: #3f51b5;
-           
 
             .mat-icon {
                 height: 160px !important;
@@ -28,29 +33,27 @@
     }
 
 
-
     .media-footer {
-       
         bottom: 0;
         width: 100%;
-        
-        
-        
-       
+        position: fixed;
+        z-index: 99999;
+        right: 0;
+        padding: 0;
+
         .time-slider {
             width: 100% !important;
-            
+
         }
 
         .media-action-bar {
             width: 100%;
-           
             justify-content: center;
 
             .mat-icon {
                 height: 48px !important;
                 width: 48px !important;
-                font-size: 48px !important;
+                font-size: 38px !important;
             }
         }
     }

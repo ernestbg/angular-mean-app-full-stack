@@ -10,16 +10,16 @@
                 <!-- Logo icon --><b>
                     <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                     <!-- Dark Logo icon -->
-                    <img src="./assets/images/logo.png" alt="homepage" class="dark-logo" />
+                    <img src="./assets/images/logo-black.png" alt="homepage" class="dark-logo" />
                     <!-- Light Logo icon -->
-                    <img src="./assets/images/logo.png" alt="homepage" class="light-logo" />
+                    <img src="./assets/images/logo-black.png" alt="homepage" class="light-logo" />
                 </b>
                 <!--End Logo icon -->
                 <!-- Logo text --><span>
                     <!-- dark Logo text -->
-                    <img src="./assets/images/db-music-white.png" alt="homepage" class="dark-logo" />
+                    <img src="./assets/images/db-music-black.png" alt="homepage" class="dark-logo" />
                     <!-- Light Logo text -->
-                    <img src="./assets/images/db-music-white.png" class="light-logo" alt="homepage" /></span> </a>
+                    <img src="./assets/images/db-music-black.png" class="light-logo" alt="homepage" /></span> </a>
         </div>
         <!-- ============================================================== -->
         <!-- End Logo -->
@@ -43,14 +43,17 @@
                 <!-- ============================================================== -->
                 <!-- Search -->
                 <!-- ============================================================== -->
-                <li class="nav-item hidden-xs-down search-box"> <a
-                        class="nav-link hidden-sm-down waves-effect waves-dark" href="javascript:void(0)"><i
-                            class="ti-search"></i></a>
-                    <form class="app-search" (submit)="search(termTxt.value)">
+                
+                    <!-- <form class="app-search" (submit)="search(termTxt.value)">
                         <input type="text" class="form-control" placeholder="Search & enter" #termTxt> <a class="srh-btn"><i
                                 class="ti-close"></i></a>
-                    </form>
-                </li>
+                    </form> -->
+                    <form class="search-container left-inner-addon input-container" (submit)="search(termTxt.value)" >
+                        <i class="icon-magnifier"></i>
+                        <input type="text" class="form-control" placeholder="Buscar" class="search-input" #termTxt>
+                      </form>
+                     
+                
                 <!-- ============================================================== -->
                 <!-- Comment -->
                 <!-- ============================================================== -->
@@ -137,7 +140,7 @@
                             <li role="separator" class="divider"></li>
                             <li><a routerLink="./profile"><i class="ti-user"></i> My Profile</a></li>
                             <li role="separator" class="divider"></li>
-                            <li><a routerLink="account-settings"><i class="ti-settings"></i> Account Setting</a></li>
+                            <li><a><i class="ti-settings"></i> Account Setting</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a (click)="logout()" class="cursor"><i class="fa fa-power-off"></i> Logout</a></li>
                         </ul>
