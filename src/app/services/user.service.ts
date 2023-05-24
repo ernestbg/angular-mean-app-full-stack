@@ -21,6 +21,7 @@ export class UserService {
   constructor(private http: HttpClient, private router: Router) { }
 
   public user: User;
+  public favouriteArtist: string;
 
   get token(): string {
     return localStorage.getItem('token') || '';
@@ -45,6 +46,12 @@ export class UserService {
   saveLocalStorage(token: string, menu: any) {
     localStorage.setItem('token', token);
     localStorage.setItem('menu', JSON.stringify(menu));
+  }
+
+  getUserById(id: any){
+    const url = (`${base_url}/users/${id}`);
+    return this.http.get(url, this.headers);
+
   }
 
   public validateToken(): Observable<boolean> {
@@ -75,9 +82,17 @@ export class UserService {
   updateProfile(data: { email: string, name: string, role: string }) {
     data = {
       ...data,
-      role: this.user.role
+      role: this.user.role,
     }
     return this.http.put(`${base_url}/users/${this.uid}`, data, this.headers);
+  }
+
+  updateFavouriteArtists(artistId: string) {
+    const options={
+      favouriteArtist:artistId
+    }
+    return this.http.put(`${base_url}/users/favourite-artists/${this.uid}`, options, this.headers);
+    
   }
 
   login(formData: LoginForm) {

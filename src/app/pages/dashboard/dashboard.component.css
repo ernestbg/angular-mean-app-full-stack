@@ -1,0 +1,12 @@
+.cardArtist {
+    border-radius: 10px;
+    background-color: #212121;
+
+}
+
+
+.cardArtistAvatar {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+
+}

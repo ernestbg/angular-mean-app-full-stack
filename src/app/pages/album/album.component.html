@@ -52,7 +52,6 @@
                             </tbody>
                         </table>
                     </div>
-
                 </div>
             </div>
             <div class="clearfix"></div>
@@ -61,10 +60,19 @@
 </div>
 
 
-
-
-<div id="comment-box">
-    <textarea id="comment-input" class="form-control" placeholder="Escribe tu comentario"
-        [(ngModel)]="review"></textarea>
-    <button id="submit-button" (click)="submitReview()">Enviar</button>
+<div class="container">
+    <h2>Comentarios</h2>
+    <div class="comment-input">
+        <textarea placeholder="Escribe tu comentario aquí..." [(ngModel)]="review"></textarea>
+        <button type="submit" class="submit-btn" (click)="submitReview()">Comentar</button>
+    </div>
+    <div class="comment-section">
+        <div class="comment" *ngFor="let comment of comments">
+            <div class="avatar"></div>
+            <div class="comment-content" >
+                <p>{{comment.text}}</p>
+                <p class="comment-meta">Hace 1 día</p>
+            </div>
+        </div>
+    </div>
 </div>

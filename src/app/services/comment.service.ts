@@ -28,24 +28,24 @@ export class CommentService {
     const url = (`${base_url}/comments`);
     return this.http.get(url, this.headers)
       .pipe(
-        map( (resp: any) => resp.comments)
+        map((resp: any) => resp.comments)
       );
   }
 
-  createComment(name:string) {
+  createComment(userId: string, artistId: string, text: string) {
     const url = (`${base_url}/comments`);
-    return this.http.post(url, {name}, this.headers);   
+    return this.http.post(url, { userId, artistId, text }, this.headers);
   }
 
-  updateComment( _id:string, name:string) {
+  updateComment(_id: string, name: string) {
     const url = (`${base_url}/comments/${_id}`);
     console.log(url);
-    return this.http.put(url, {name}, this.headers);   
+    return this.http.put(url, { name }, this.headers);
   }
 
-  deleteComment( _id:string) {
+  deleteComment(_id: string) {
     const url = (`${base_url}/comments/${_id}`);
-    return this.http.delete(url, this.headers);  
+    return this.http.delete(url, this.headers);
   }
 
 }

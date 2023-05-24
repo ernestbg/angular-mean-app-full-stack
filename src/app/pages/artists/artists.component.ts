@@ -14,12 +14,10 @@ export class ArtistsComponent {
 
   artists: Artist[] = [];
 
-
-  contador: number = 0;
-  constructor(private _spotifyService: ApiSpotifyService, private router: Router) { }
+  constructor(private apiSpotifyService: ApiSpotifyService, private router: Router) { }
 
   searchArtists(query: string) {
-    this._spotifyService.getArtists(query).subscribe((data: any) => {
+    this.apiSpotifyService.getArtists(query).subscribe((data: any) => {
       this.artists = data;
     
     });

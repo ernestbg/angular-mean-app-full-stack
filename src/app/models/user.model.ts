@@ -12,7 +12,9 @@ export class User {
         public img?: string,
         public role?: 'ADMIN_ROLE' | 'USER_ROLE',
         public google?: boolean,
-        public uid?: string
+        public uid?: string,
+        public favouriteArtists?: string[]
+        
     ) { }
 
     get imageUrl() {

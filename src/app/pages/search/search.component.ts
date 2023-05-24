@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Artist } from 'src/app/models/artist.model';
 import { Playlist } from 'src/app/models/playlist.model';
 import { Song } from 'src/app/models/song.model';
 import { User } from 'src/app/models/user.model';
+import { ApiSpotifyService } from 'src/app/services/api-spotify.service';
 import { SearchesService } from 'src/app/services/searches.service';
 
 @Component({
@@ -16,8 +18,12 @@ export class SearchComponent implements OnInit {
   public users: User[] = [];
   public playlists: Playlist[] = [];
   public songs: Song[] = [];
+  artists: Artist[] = [];
 
-  constructor(private activateRoute: ActivatedRoute, private searchesService: SearchesService) { }
+  constructor(private activateRoute: ActivatedRoute,
+    private searchesService: SearchesService,
+    private apiSpotifyService: ApiSpotifyService,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.activateRoute.params.subscribe(
@@ -36,7 +42,9 @@ export class SearchComponent implements OnInit {
       });
   }
 
-  openSong(song:Song){
 
-  }
+  //////////////////////////////////
+  
+
+ 
 }

@@ -221,9 +221,7 @@ th {
 }
 
 /********************/
-.input-container {
-    padding-bottom: 1em;
-}
+
 
 .left-inner-addon {
     position: relative;
@@ -291,11 +289,4 @@ th {
     right: 0px;
     padding: 9px 12px;
     pointer-events: none;
-}
-
-input {
-    width: 100%;
-    padding: 1em !important;
-    margin: 0em !important;
-    box-sizing: border-box;
 }

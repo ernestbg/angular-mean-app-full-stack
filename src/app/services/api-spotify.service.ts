@@ -65,6 +65,10 @@ export class ApiSpotifyService {
   getArtist(id: string) {
     return this.getInfo(`artists/${id}`);
   }
+  
+  getArtistAndRelatedArtist(query: string){
+    return this.getInfo(`artists/${query}/related-artists`);
+  }
 
   getAlbums(query: string) {
     return this.getInfo(`search?q=${query}&type=album&limit=8`).pipe(map((data: any) => data.albums.items));

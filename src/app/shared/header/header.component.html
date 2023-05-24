@@ -50,7 +50,7 @@
                     </form> -->
                     <form class="search-container left-inner-addon input-container" (submit)="search(termTxt.value)" >
                         <i class="icon-magnifier"></i>
-                        <input type="text" class="form-control" placeholder="Buscar" class="search-input" #termTxt>
+                        <input type="text" class="form-control" placeholder="Buscar" (keyup.enter)="searchArtists(search1.value)" class="search-input" #termTxt>
                       </form>
                      
                 
@@ -59,7 +59,7 @@
                 <!-- ============================================================== -->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false"> <i class="mdi mdi-message"></i>
+                        aria-haspopup="true" aria-expanded="false"> <i class="mdi mdi-bell"></i>
                         <div class="notify"> 
                             <!-- <span class="point"></span>  -->
                         </div>
