@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { FormGroup } from '@angular/forms';
-import { User } from 'src/app/models/user.model';
 import { FileUploadService } from 'src/app/services/file-upload.service';
 import { ModalImgService } from 'src/app/services/modal-img.service';
 import Swal from 'sweetalert2';

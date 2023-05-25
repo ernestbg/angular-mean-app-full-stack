@@ -35,19 +35,4 @@ export class HeaderComponent {
     this.userService.logout();
   }
 
-  /////////////////////////////
-  searchArtists(query: string) {
-    this.apiSpotifyService.getArtists(query).subscribe((data: any) => {
-      this.artists = data;
-    
-    });
-  }
-
-  capitalizeFirstLetter(text: string) {
-    return text.charAt(0).toUpperCase() + text.slice(1);
-  }
-
-  goArtistDetail(artistId: string) {
-    this.router.navigate(['/dashboard/artist-detail', artistId]);
-  }
 }

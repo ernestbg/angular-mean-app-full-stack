@@ -1,26 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IncrementerComponent } from './incrementer/incrementer.component';
 import { FormsModule } from '@angular/forms';
-import { DoughnutComponent } from './doughnut/doughnut.component';
 import { NgChartsModule } from 'ng2-charts';
 import { ModalImageComponent } from './modal-image/modal-image.component';
+import { ModalSongComponent } from './modal-song/modal-song.component';
 
 
 
 
 @NgModule({
-  declarations: [
-    IncrementerComponent,
-    DoughnutComponent,
+  declarations: [ 
     ModalImageComponent,
-    
+    ModalSongComponent,  
   ],
   exports: [
-    IncrementerComponent,
-    DoughnutComponent,
-    ModalImageComponent
-    
+    ModalImageComponent,
+    ModalSongComponent  
   ],
   imports: [
     CommonModule,

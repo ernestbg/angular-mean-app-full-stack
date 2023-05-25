@@ -5,6 +5,7 @@ import jwt_decode from 'jwt-decode';
 import { Artist } from 'src/app/models/artist.model';
 import { Router } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
+import { Storage, ref, uploadBytes } from '@angular/fire/storage';
 
 
 @Component({
@@ -19,25 +20,21 @@ export class DashboardComponent {
 
   artistsname: string;
   artistid: string;
-
   artists: any[];
 
-
-  contador: number = 0;
-
-
-
-
-  constructor(private userService: UserService, private apiSpotifyService: ApiSpotifyService, private router: Router) { }
+  constructor(private userService: UserService,
+    private apiSpotifyService: ApiSpotifyService,
+    private router: Router,
+  ) { }
 
 
 
   ngOnInit(): void {
-    this.apiSpotifyService.getArtistAndRelatedArtist('4rXABp4A7KjG9elWFNAbO4').subscribe((resp: any) => {
 
-      this.artists = resp.artists;
-      console.log(this.artists)
-
+    this.userService.getUserById(this.extractTokenId()).pipe(
+      switchMap((resp: any) => this.apiSpotifyService.getArtistAndRelatedArtist(resp.user.favouriteArtist))
+    ).subscribe((resp2: any) => {
+      this.artists = resp2.artists;
     });
   }
 
@@ -63,14 +60,6 @@ export class DashboardComponent {
 
   goArtistDetail(artistId: string) {
     this.router.navigate(['/dashboard/artist-detail', artistId]);
-  }
-
-  /////////////////////////////////////////////////
-  searchArtists(query: string) {
-    this.apiSpotifyService.getArtists(query).subscribe((data: any) => {
-      this.artists = data;
-
-    });
   }
 
 }

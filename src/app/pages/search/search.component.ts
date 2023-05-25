@@ -18,6 +18,7 @@ export class SearchComponent implements OnInit {
   public users: User[] = [];
   public playlists: Playlist[] = [];
   public songs: Song[] = [];
+  public loading: boolean = true;
   artists: Artist[] = [];
 
   constructor(private activateRoute: ActivatedRoute,
@@ -29,13 +30,16 @@ export class SearchComponent implements OnInit {
     this.activateRoute.params.subscribe(
       ({ term }) => {
         this.searchAll(term);
+        this.searchArtists(term);
       }
     )
   }
 
   searchAll(term: string) {
+    this.loading = true;
     this.searchesService.searchAll(term)
       .subscribe((resp: any) => {
+        this.loading = false;
         this.users = resp.users;
         this.playlists = resp.playlists;
         this.songs = resp.songs;
@@ -45,6 +49,19 @@ export class SearchComponent implements OnInit {
 
   //////////////////////////////////
   
+  searchArtists(query: string) {
+    this.apiSpotifyService.getArtists(query).subscribe((data: any) => {
+      this.artists = data;
+    
+    });
+  }
 
+  capitalizeFirstLetter(text: string) {
+    return text.charAt(0).toUpperCase() + text.slice(1);
+  }
+
+  goArtistDetail(artistId: string) {
+    this.router.navigate(['/dashboard/artist-detail', artistId]);
+  }
  
 }

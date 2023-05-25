@@ -1,13 +1,3 @@
-<div class="row animated fadeIn fast">
-    <div class="col-12">
-        <div class="card">
-            <div class="card-body">
-                <input type="text" class="form-control" placeholder="Search song" #txtTerm
-                    (keyup)="search(txtTerm.value)">
-            </div>
-        </div>
-    </div>
-</div>
 <div class="row animated fadeIn fast" *ngIf="loading">
     <div class="col-12">
         <div class="text-center">
@@ -30,63 +20,93 @@
 </div>
 
 <div class="row" *ngIf="!loading">
-    <div class="col-12">
+    <div class="col-8">
         <div class="card">
             <div class="card-body">
-
+                <form class="search-container left-inner-addon input-container" (keyup)="search(txtTerm.value)">
+                    <i class="icon-magnifier"></i>
+                    <input type="text" class="form-control" placeholder="Buscar" class="search-input" #txtTerm>
+                </form>
+                <br>
                 <div class="row">
                     <div class="col-8">
                         <h4 class="card-title">Songs ({{songs.length}})</h4>
-                        <h6 class="card-subtitle">Add<code>.table-bordered</code>for borders on all sides of the table
-                            and
-                            cells.
-                        </h6>
                     </div>
                     <div class="col">
                         <div class="text-right">
-                            <a class="btn btn-primary" routerLink="/dashboard/song/new">
-                                <i class="fa fa-music"></i> Create song
-                            </a>
+                            <!-- <button class="btn btn-orange" routerLink="/dashboard/song/new">
+                                <i class="fa fa-music"></i> Upload song
+                            </button> -->
+                            <button (click)="openModalSong()">Abrir Modal</button>
+                            
+
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <!-- Table -->
+                    <div class="card width">
+                        <div class="card-body">
+                            <div class="bootstrap-table">
+                                <div class="fixed-table-toolbar"></div>
+                                <div class="fixed-table-container" style="padding-bottom: 0px;">
+                                    <div class="fixed-table-body">
+                                        <table id="smptable" class="table table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>
+                                                        <div class="th-inner">#</div>
+                                                        <div class="fht-cell"></div>
+                                                    </th>
+                                                    <th>
+                                                        <div class="th-inner">Title</div>
+                                                        <div class="fht-cell"></div>
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr data-index="0" *ngFor="let song of songs">
+                                                    <td> <img [src]="song.img | image: 'songs'" [alt]="song.name"
+                                                            class="imgTable cursor" (click)="openModal(song)"></td>
+                                                    <td>{{song.name}}</td>
+                                                    <td class="text-nowrap text-center">
+                                                        <a [routerLink]="['/dashboard/song', song._id]"
+                                                            data-toggle="tooltip" data-original-title="Edit"> <i
+                                                                class="fa fa-pencil text-inverse m-r-10"></i>
+                                                            Edit</a>
+                                                        <a class="cursor" data-toggle="tooltip"
+                                                            data-original-title="Close" (click)="deleteSong(song)">
+                                                            <i class="fa fa-close text-danger"></i> Delete
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="fixed-table-footer" style="display: none;">
+                                        <table>
+                                            <tbody>
+                                                <tr></tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
                         </div>
                     </div>
                 </div>
-
-
-                <div class="table-responsive">
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr>
-                                <th class="w100">Img</th>
-                                <th>Name</th>
-                                <th class="text-nowrap w100">Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr *ngFor="let song of songs">
-                                <td class="text-center">
-                                    <img [src]="song.img | image: 'songs'" [alt]="song.name" class="imgTable cursor"
-                                        (click)="openModal(song)">
-                                </td>
-                                <td>
-                                    {{song.name}}
-                                </td>
-                                <td class="text-nowrap text-center">
-                                    <a [routerLink]="['/dashboard/song', song._id]" data-toggle="tooltip"
-                                        data-original-title="Edit"> <i class="fa fa-pencil text-inverse m-r-10"></i>
-                                        Edit</a>
-                                    <a class="cursor" data-toggle="tooltip" data-original-title="Close"
-                                        (click)="deleteSong(song)">
-                                        <i class="fa fa-close text-danger"></i> Delete
-                                    </a>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <!-- <button class="btn-secondary">Previous</button>
-                &nbsp;
-                <button class="btn-secondary">Next</button> -->
+                
             </div>
         </div>
     </div>
 </div>
+<div *ngIf="isOpen===true">
+    <app-modal-song></app-modal-song>
+
+</div>
+
+
+
+  

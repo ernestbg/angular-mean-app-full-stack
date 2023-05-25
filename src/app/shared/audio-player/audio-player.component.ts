@@ -3,6 +3,8 @@ import { AudioService } from "../../services/audio.service";
 import { CloudService } from "../../services/cloud.service";
 import { StreamState } from 'src/app/interfaces/stream-state.interface';
 import { SongService } from 'src/app/services/song.service';
+import { Storage, ref, listAll, getMetadata, getDownloadURL } from '@angular/fire/storage';
+import jwt_decode from 'jwt-decode';
 
 @Component({
   selector: 'app-audio-player',
@@ -16,20 +18,64 @@ export class AudioPlayerComponent {
   state: StreamState;
   currentFile: any = {};
 
+
   constructor(
     public audioService: AudioService,
     public cloudService: CloudService,
     public songService: SongService,
+    private storage: Storage
   ) {
     // get media files
     cloudService.getFiles().subscribe(files => {
-      this.files = files;
+    this.files = files;
     });
+
 
     // listen to stream state
     this.audioService.getState().subscribe(state => {
       this.state = state;
     });
+  }
+
+  ngOnInit(): void {
+    this.getSoundtracks();
+  }
+
+  getSoundtracks() {
+    const songsRef = ref(this.storage, 'soundtracks');
+    listAll(songsRef)
+      .then(async (result) => {
+        const filteredFiles: any = [];
+        for (const item of result.items) {
+          const metadata = await getMetadata(item);
+          if (metadata.customMetadata && metadata.customMetadata['userID'] === this.extractTokenId()) {
+            filteredFiles.push(item);
+          }
+        }
+        const urls = await Promise.all(filteredFiles.map((file: any) => getDownloadURL(file)));
+        const jsonObjects: any[] = [];
+
+        filteredFiles.forEach((file: any, index: any) => {
+          const fileName = file.name;
+          const url = urls[index];
+          const jsonObject = {
+            url: url,
+            name: fileName
+          };
+          jsonObjects.push(jsonObject);
+        });
+        this.files=jsonObjects;
+       
+      })
+      .catch((error) => {
+        console.error('Error al obtener la lista de archivos:', error);
+      });
+  }
+
+  extractTokenId() {
+    const token = localStorage.getItem('token')
+    const decodedToken: any = jwt_decode(token);
+    return decodedToken.uid;
   }
 
 
