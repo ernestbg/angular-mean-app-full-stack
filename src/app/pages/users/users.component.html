@@ -1,31 +1,44 @@
-<div class="row animated fadeIn fast">
-    <div class="col-12">
-        <div class="card">
-            <div class="card-body">
-                <input type="text" class="form-control" placeholder="Search user" (keyup)="search(termTxt.value)"
-                    #termTxt>
-            </div>
-        </div>
-    </div>
-</div>
+
+
 <div class="row animated fadeIn fast" *ngIf="loading">
     <div class="col-12">
-        <div class="alert alert-info text-center">
-            <h4 class="alert-heading">loading...</h4>
-            <p class="fa fa-spin fa-refresh fa-2x"></p>
-            <p class="mb-0">Please wait</p>
+        <div class="text-center">
+            <div class="lds-spinner">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
         </div>
     </div>
 </div>
 
 <div class="row animated fadeIn fast" *ngIf="!loading">
+
     <div class="col-12">
         <div class="card">
             <div class="card-body">
+
+                <div class="row animated fadeIn fast">
+                    <div class="col-8" >
+                        <form class="search-container left-inner-addon input-container mb-30">
+                            <i class="icon-magnifier"></i>
+                            <input type="text" class="form-control" placeholder="Buscar usuario" class="search-input"
+                                (keyup)="search(termTxt.value)" #termTxt>
+                        </form>
+                
+                    </div>
+                
+                </div>
                 <h4 class="card-title">Total of users: {{totalUsers}}</h4>
-                <h6 class="card-subtitle">Add<code>.table-bordered</code>for borders on all sides of the table and
-                    cells.
-                </h6>
                 <div class="table-responsive">
                     <table class="table table-bordered">
                         <thead>
@@ -58,17 +71,17 @@
                                 <td class="text-nowrap text-center">
                                     <a data-toggle="tooltip" data-original-title="Edit"> <i
                                             class="fa fa-pencil text-inverse m-r-10"></i> Edit</a>
-                                    <a data-toggle="tooltip" data-original-title="Close" (click)="deleteUser(user)" class="cursor"><i
-                                            class="fa fa-close text-danger"></i> Delete</a>
+                                    <a data-toggle="tooltip" data-original-title="Close" (click)="deleteUser(user)"
+                                        class="cursor"><i class="fa fa-close text-danger"></i> Delete</a>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
                 <div *ngIf="termTxt.value.length === 0">
-                    <button (click)="changePage(-5)" class="btn-secondary">Previous</button>
+                    <button (click)="changePage(-5)" class="btn btn-secondary height-btn">Previous</button>
                     &nbsp;
-                    <button (click)="changePage(5)" class="btn-secondary">Next</button>
+                    <button (click)="changePage(5)" class="btn btn-secondary height-btn">Next</button>
 
                 </div>
             </div>

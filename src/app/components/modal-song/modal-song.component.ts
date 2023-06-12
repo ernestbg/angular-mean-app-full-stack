@@ -28,27 +28,7 @@ export class ModalSongComponent {
   }
 
 
-  onDragOver(event: DragEvent) {
-    event.preventDefault();
-    event.stopPropagation();
-    // Agregar estilos o clases adicionales según sea necesario
-  }
 
-  onDragLeave(event: DragEvent) {
-    event.preventDefault();
-    event.stopPropagation();
-    // Restablecer estilos o clases según sea necesario
-  }
-
-  onDrop(event: DragEvent) {
-    event.preventDefault();
-    event.stopPropagation();
-    // Lógica para manejar los archivos soltados
-    const files = event.dataTransfer?.files;
-    if (files) {
-      // Realizar acciones con los archivos aquí
-    }
-  }
 
   extractTokenId() {
     const token = localStorage.getItem('token')

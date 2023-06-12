@@ -5,6 +5,7 @@ import { StreamState } from 'src/app/interfaces/stream-state.interface';
 import { SongService } from 'src/app/services/song.service';
 import { Storage, ref, listAll, getMetadata, getDownloadURL } from '@angular/fire/storage';
 import jwt_decode from 'jwt-decode';
+import { ModalSongService } from 'src/app/services/modal-song.service';
 
 @Component({
   selector: 'app-audio-player',
@@ -17,17 +18,19 @@ export class AudioPlayerComponent {
   files: Array<any> = [];
   state: StreamState;
   currentFile: any = {};
+  isOpen: boolean;
 
 
   constructor(
     public audioService: AudioService,
     public cloudService: CloudService,
     public songService: SongService,
-    private storage: Storage
+    private storage: Storage,
+    private modalSongService: ModalSongService
   ) {
     // get media files
     cloudService.getFiles().subscribe(files => {
-    this.files = files;
+      this.files = files;
     });
 
 
@@ -39,6 +42,17 @@ export class AudioPlayerComponent {
 
   ngOnInit(): void {
     this.getSoundtracks();
+    this.modalSongService.$modal.subscribe((value) => {
+      this.isOpen = value;
+    });
+  }
+
+  openModalSong() {
+    this.isOpen = true;
+  }
+
+  closeModalSong() {
+    this.isOpen = false;
   }
 
   getSoundtracks() {
@@ -64,8 +78,8 @@ export class AudioPlayerComponent {
           };
           jsonObjects.push(jsonObject);
         });
-        this.files=jsonObjects;
-       
+        this.files = jsonObjects;
+
       })
       .catch((error) => {
         console.error('Error al obtener la lista de archivos:', error);
@@ -125,7 +139,7 @@ export class AudioPlayerComponent {
     this.openFile(file, index);
   }
 
-  onSliderChangeEnd(change:any) {
+  onSliderChangeEnd(change: any) {
     this.audioService.seekTo(change.value);
   }
 

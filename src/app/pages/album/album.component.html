@@ -1,12 +1,16 @@
 <div class="row containerArtist">
-    <div class="col-lg-3 col-md-6">
+    <div class="col-lg-4 col-md-6">
         <div class="card">
             <img class="card-img-top img-responsive" [src]="album.images[0].url" alt="Card image cap">
         </div>
     </div>
-    <div class="col-lg-3 col-md-6">
+  
+
+    <i  [ngClass]="storedClass" (click)="updateFavouriteAlbums()" #icon></i>
+    <div class="col-lg-4 col-md-6">
         <div class="card">
-            <p>{{album.name}}</p>
+            
+            <h4>{{album.name}}</h4>
         </div>
     </div>
 </div>
@@ -62,16 +66,21 @@
 
 <div class="container">
     <h2>Comentarios</h2>
-    <div class="comment-input">
-        <textarea placeholder="Escribe tu comentario aquí..." [(ngModel)]="review"></textarea>
-        <button type="submit" class="submit-btn" (click)="submitReview()">Comentar</button>
-    </div>
+
+    <div class="comment-container">
+        <div class="avatar"></div>
+        <input type="text" class="comment-input" placeholder="Escribe tu comentario aquí" [(ngModel)]="review">
+      </div>
+      <div class="button-container">
+        <button class="submit-button" type="submit"  (click)="submitReview()">Enviar</button>
+      </div>
+      
     <div class="comment-section">
         <div class="comment" *ngFor="let comment of comments">
             <div class="avatar"></div>
-            <div class="comment-content" >
+            <div class="comment-content">
                 <p>{{comment.text}}</p>
-                <p class="comment-meta">Hace 1 día</p>
+                <p class="comment-meta">{{getTiempoTranscurrido(comment.timestamp)}}</p>
             </div>
         </div>
     </div>

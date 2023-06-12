@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { NgChartsModule } from 'ng2-charts';
 import { ModalImageComponent } from './modal-image/modal-image.component';
 import { ModalSongComponent } from './modal-song/modal-song.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -20,7 +21,7 @@ import { ModalSongComponent } from './modal-song/modal-song.component';
   imports: [
     CommonModule,
     FormsModule,
-    NgChartsModule
+    NgChartsModule,
   ]
 })
 export class ComponentsModule { }

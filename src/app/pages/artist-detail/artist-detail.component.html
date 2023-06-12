@@ -1,4 +1,4 @@
-<div class="row containerArtist" >
+<div class="row  containerArtist margin-bottom" >
     <!-- column -->
     <div class="col-lg-3 col-md-6">
         <!-- Card -->
@@ -8,18 +8,21 @@
         </div>
         <!-- Card -->
     </div>
-    <div class="col-lg-3 col-md-6">
+    <div class="col-lg-4 col-md-6">
         <!-- Card -->
-        <div class="card">
-            <p>{{artist.name}}</p>
-            <p>hola</p>
-            <p>hola</p>
+        <div class="card padding">
+            <h4 class="artist-name">{{artist.name}}</h4>
+            <p >{{artist.followers.total}} seguidores</p>
+            
 
         </div>
         <!-- Card -->
     </div>
 
 </div>
+
+<h4 class="margin-top artist-name">Albums of {{artist.name}} </h4>
+<hr color="white" class="hr-styles">
 
 <div class="row el-element-overlay">
     <div class="col-lg-3 col-md-6 animated fadeIn fast" *ngFor="let album of albums">
@@ -38,7 +41,7 @@
                     </div>
                 </div>
                 <div class="el-card-content">
-                    <h3 class="box-title">{{album.name}}</h3> <small>{{album.name}}</small>
+                    <h3 class="box-title">{{album.name}}</h3> <small>{{capitalizeFirstLetter(album.album_type)}}</small>
                     <br />
                 </div>
             </div>

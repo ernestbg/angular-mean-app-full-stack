@@ -1,23 +1,49 @@
 <div class="container">
-     <!-- <mat-toolbar color="primary" class="main-toolbar">
+    <!-- <mat-toolbar color="primary" class="main-toolbar">
         <span>Audio Player</span>
-    </mat-toolbar> -->
+    </mat-toolbar>
     <div class="content">
-         <!-- <div class="logo">
+        <div class="logo">
             <mat-icon>music_note</mat-icon>
             <div>Audio Player</div>
-        </div>  -->
+        </div> 
         <mat-list color="primary">
             <h3 mat-subheader>Songs</h3>
+            <button (click)="openModalSong()">Abrir Modal</button>
+            <div *ngIf="isOpen===true">
+                <app-modal-song></app-modal-song>
+            </div>
             <mat-list-item *ngFor="let file of files; let i = index" (click)="openFile(file, i)">
                 <mat-icon color="primary" mat-list-icon>music_note</mat-icon>
                 <h4 mat-line>{{ file.name }}</h4>
-                <!-- <mat-icon color="primary" *ngIf="currentFile.index === i && !state?.error">volume_up</mat-icon> -->
-                <!-- <h6 *ngIf="currentFile.index === i && state?.error">ERROR</h6> -->
+                <mat-icon color="primary" *ngIf="currentFile.index === i && !state?.error">volume_up</mat-icon>
+                <h6 *ngIf="currentFile.index === i && state?.error">ERROR</h6>
                 <mat-divider></mat-divider>
             </mat-list-item>
         </mat-list>
-    </div>
+    </div> -->
+
+    <table class="ux-ui-table">
+        <thead>
+            <button class="btn upload-btn" (click)="openModalSong()">Upload song</button>
+            <div *ngIf="isOpen === true">
+                <app-modal-song></app-modal-song>
+            </div>
+            <tr>
+                <th>Title</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="cursor" *ngFor="let file of files; let i = index" (click)="openFile(file, i)">
+                <td> <i class="mdi mdi-play size"></i>{{file.name}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+
+
+
     <div class="media-footer">
         <mat-toolbar class="toolbar-audio">
             <mat-toolbar-row>

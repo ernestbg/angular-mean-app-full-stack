@@ -11,13 +11,7 @@ export class CloudService {
 
   files: any = []
 
-  constructor(private storage: Storage) { 
-
-   
-  }
-
-
-
+  constructor(private storage: Storage) { }
 
   extractTokenId() {
     const token = localStorage.getItem('token')

@@ -1,12 +1,18 @@
 <div class="row">
     <div class="col-md-6">
+        
         <div class="card">
             <div class="card-body">
+                
                 <h4 class="card-title">My profile</h4>
-                <h6 class="card-subtitle">made with bootstrap elements</h6>
+                <div class="form-group">  
+                    <div class="input-group">
+                        <button class="btn color-button" (click)="openModalImage()"><i class="ti-image"></i> Change image</button>
+                    </div>
+                </div>
                 <form class="form p-t-20" [formGroup]="profileForm" (submit)="updateProfile()">
                     <div class="form-group">
-                        <label for="exampleInputuname">User Name</label>
+                        <label for="exampleInputuname">Username</label>
                         <div class="input-group">
                             <div class="input-group-addon"><i class="ti-user"></i></div>
                             <input type="text" class="form-control" id="exampleInputuname" placeholder="Username"
@@ -20,32 +26,32 @@
                             <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email"
                                 formControlName="email" [readOnly]="user.google">
                         </div>
+                    </div>                          
+                    <div *ngIf="isOpen === true">
+                        <app-modal-image></app-modal-image>
                     </div>
-                    <button type="submit" class="btn btn-success waves-effect waves-light m-r-10"
-                        [disabled]="profileForm.invalid"><i class="fa fa-save"></i> Save</button>
+                    <button type="submit" class="btn btn-success waves-effect waves-light m-r-10 "
+                        [disabled]="profileForm.invalid">Save</button>
                     <button type="submit" class="btn btn-inverse waves-effect waves-light">Cancel</button>
                 </form>
             </div>
         </div>
-
-
     </div>
 
-    <div class="row">
+    <!-- <div class="row">
         <div class="col-md-6">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">Image</h4>
                     <h6 class="card-subtitle">Image profile</h6>
                     <div class="text-center">
                         <img *ngIf="!imgTemp" [src]="user.imageUrl" alt="" class="imgProfile">
                         <img *ngIf="imgTemp" [src]="imgTemp" alt="" class="imgProfile">
                     </div>
+
+
                     <input type="file" (change)="changeImg($any($event.target).files[0])">
-                    <button type="button" class="btn btn-success btn-block waves-effect waves-light m-r-10"
-                        [disabled]="!imgUploading" (click)="uploadImg()"><i class="fa fa-save"></i> Change
-                        image</button>
+
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->

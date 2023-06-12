@@ -24,17 +24,17 @@ export class CommentService {
     }
   }
 
-  loadComments() {
-    const url = (`${base_url}/comments`);
+  loadComments(albumId: string) {
+    const url = (`${base_url}/comments/${albumId}`);
     return this.http.get(url, this.headers)
       .pipe(
         map((resp: any) => resp.comments)
       );
   }
 
-  createComment(userId: string, artistId: string, text: string) {
+  createComment(userId: string, artistId: string, albumId: string, text: string) {
     const url = (`${base_url}/comments`);
-    return this.http.post(url, { userId, artistId, text }, this.headers);
+    return this.http.post(url, { userId, artistId, albumId, text }, this.headers);
   }
 
   updateComment(_id: string, name: string) {

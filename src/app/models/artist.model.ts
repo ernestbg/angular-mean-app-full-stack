@@ -10,6 +10,7 @@ export class Artist {
         public type: string,
         public name: string,
         public images?: Image[],
+        public followers?: any,
 
     ) { }
 }

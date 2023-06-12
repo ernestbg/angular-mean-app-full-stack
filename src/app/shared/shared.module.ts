@@ -12,6 +12,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card';
 import { AudioPlayerComponent } from './audio-player/audio-player.component';
+import { ComponentsModule } from '../components/components.module';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { AudioPlayerComponent } from './audio-player/audio-player.component';
     MatSliderModule,
     MatIconModule,
     MatToolbarModule,
-    MatCardModule
+    MatCardModule,
+    ComponentsModule
   ]
 })
 export class SharedModule { }

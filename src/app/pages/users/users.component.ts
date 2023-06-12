@@ -9,8 +9,7 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
-  styles: [
-  ]
+  styleUrls: ['./users.component.css']
 })
 
 export class UsersComponent implements OnInit, OnDestroy {

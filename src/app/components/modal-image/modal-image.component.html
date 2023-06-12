@@ -1,4 +1,4 @@
-<div class="background-modal-img animated fadeIn fast" [class.hidden]="modalImgService.hideModal">
+<div class="background-modal-img animated fadeIn fast">
     <div class="modal fade show" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1"
         style="display: block; padding-right: 17px;">
         <div class="modal-dialog" role="document">
@@ -14,13 +14,15 @@
                         <img *ngIf="!imgTemp" [src]="modalImgService.img" alt="" class="imgProfile">
                         <img *ngIf="imgTemp" [src]="imgTemp" alt="" class="imgProfile">
                     </div>
-                    <input type="file" (change)="changeImg($any($event.target).files[0])">
+                    <!-- <input type="file" (change)="changeImg($any($event.target).files[0])"> -->
+                    <input type="file" (change)="uploadFile($event)">
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" (click)="uploadImg()">Load</button>
+                    <!-- <button type="button" class="btn btn-primary" (click)="uploadImg()">Load</button> -->
                     <button type="button" class="btn btn-default" data-dismiss="modal" (click)="closeModal()">Cancel</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
+

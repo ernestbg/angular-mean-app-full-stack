@@ -42,7 +42,7 @@ export class SongsComponent implements OnInit, OnDestroy {
     this.modalSongService.$modal.subscribe((value) => {
       this.isOpen = value;
     });
-    this.getSoundtracks();
+    //this.getSoundtracks();
   }
 
   ngOnDestroy(): void {
@@ -112,36 +112,36 @@ export class SongsComponent implements OnInit, OnDestroy {
   }
 
 
-  getSoundtracks() {
-    const songsRef = ref(this.storage, 'soundtracks');
-    listAll(songsRef)
-      .then(async (result) => {
-        const filteredFiles: any = [];
-        for (const item of result.items) {
-          const metadata = await getMetadata(item);
-          if (metadata.customMetadata && metadata.customMetadata['userID'] === this.extractTokenId()) {
-            filteredFiles.push(item);
-          }
-        }
-        const urls = await Promise.all(filteredFiles.map((file: any) => getDownloadURL(file)));
-        const jsonObjects: any[] = [];
+  // getSoundtracks() {
+  //   const songsRef = ref(this.storage, 'soundtracks');
+  //   listAll(songsRef)
+  //     .then(async (result) => {
+  //       const filteredFiles: any = [];
+  //       for (const item of result.items) {
+  //         const metadata = await getMetadata(item);
+  //         if (metadata.customMetadata && metadata.customMetadata['userID'] === this.extractTokenId()) {
+  //           filteredFiles.push(item);
+  //         }
+  //       }
+  //       const urls = await Promise.all(filteredFiles.map((file: any) => getDownloadURL(file)));
+  //       const jsonObjects: any[] = [];
 
-        filteredFiles.forEach((file: any, index: any) => {
-          const fileName = file.name;
-          const url = urls[index];
-          const jsonObject = {
-            url: url,
-            name: fileName
-          };
-          jsonObjects.push(jsonObject);
-        });
+  //       filteredFiles.forEach((file: any, index: any) => {
+  //         const fileName = file.name;
+  //         const url = urls[index];
+  //         const jsonObject = {
+  //           url: url,
+  //           name: fileName
+  //         };
+  //         jsonObjects.push(jsonObject);
+  //       });
         
        
-      })
-      .catch((error) => {
-        console.error('Error al obtener la lista de archivos:', error);
-      });
-  }
+  //     })
+  //     .catch((error) => {
+  //       console.error('Error al obtener la lista de archivos:', error);
+  //     });
+  // }
 
  
 

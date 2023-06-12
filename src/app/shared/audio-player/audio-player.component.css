@@ -58,3 +58,51 @@
         }
     }
 }
+
+
+/**********************************************/
+
+.ux-ui-table {
+    width: 50%;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+    background-color: #222222;
+    color: #ffffff;
+    margin-top: 70px;
+  }
+  
+  .ux-ui-table th,
+  .ux-ui-table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #444444;
+  }
+  
+  .ux-ui-table th {
+    background-color: #333333;
+    font-weight: bold;
+  }
+  
+  .ux-ui-table tbody tr:nth-child(even) {
+    background-color: #292929;
+    cursor: pointer;
+  }
+  
+  .ux-ui-table tbody tr:hover {
+    background-color: #555555;
+  }
+
+
+/*********************************/
+
+.upload-btn{
+    
+margin-left: 440px
+}
+
+.size{
+    font-size: 20px;
+    margin-right: 5px;
+}
+  
+  

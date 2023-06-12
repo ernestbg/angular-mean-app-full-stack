@@ -48,11 +48,11 @@ export class SearchComponent implements OnInit {
 
 
   //////////////////////////////////
-  
+
   searchArtists(query: string) {
     this.apiSpotifyService.getArtists(query).subscribe((data: any) => {
       this.artists = data;
-    
+
     });
   }
 
@@ -63,5 +63,7 @@ export class SearchComponent implements OnInit {
   goArtistDetail(artistId: string) {
     this.router.navigate(['/dashboard/artist-detail', artistId]);
   }
- 
+
+
+
 }

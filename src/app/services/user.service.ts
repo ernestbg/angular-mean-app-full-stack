@@ -13,6 +13,7 @@ import { LoadUser } from '../interfaces/load-users.interface';
 declare const google: any;
 const base_url = environment.base_url;
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -22,6 +23,7 @@ export class UserService {
 
   public user: User;
   public favouriteArtist: string;
+  favouriteArtists:any=[]
 
   get token(): string {
     return localStorage.getItem('token') || '';
@@ -48,7 +50,7 @@ export class UserService {
     localStorage.setItem('menu', JSON.stringify(menu));
   }
 
-  getUserById(id: any){
+  getUserById(id: any) {
     const url = (`${base_url}/users/${id}`);
     return this.http.get(url, this.headers);
 
@@ -88,11 +90,29 @@ export class UserService {
   }
 
   updateFavouriteArtists(artistId: string) {
-    const options={
-      favouriteArtist:artistId
+    const options = {
+      favouriteArtist: artistId
     }
     return this.http.put(`${base_url}/users/favourite-artists/${this.uid}`, options, this.headers);
+  }
+
+  deleteFavouriteArtists() {
+    console.log(this.uid)
     
+    return this.http.put(`${base_url}/users/delete-favourite-artists/${this.uid}`, this.headers).subscribe((resp:any)=>{
+      console.log(resp)
+    });
+  }
+
+ addFavouriteAlbums(albumId: string) {
+    const options = {
+      favouriteAlbums: albumId
+    }
+    return this.http.put(`${base_url}/users/favourite-albums/${this.uid}`, options, this.headers);
+  }
+  
+  deleteFavouriteAlbum(albumId: string) {
+    return this.http.delete(`${base_url}/users/${this.uid}/favourite-albums/${albumId}`, this.headers);
   }
 
   login(formData: LoginForm) {
@@ -137,6 +157,10 @@ export class UserService {
           };
         })
       );
+  }
+
+  loadAlbumsByUserId(){
+
   }
 
   saveUser(user: User) {

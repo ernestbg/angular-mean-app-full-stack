@@ -55,7 +55,8 @@ export class ApiSpotifyService {
   }
 
   getNewReleases() {
-    return this.getInfo('browse/new-releases?limit=50&offset=0').pipe(map((data: any) => data.albums.items));
+    return this.getInfo('browse/new-releases');
+    
   }
 
   getArtists(query: string) {
@@ -78,8 +79,16 @@ export class ApiSpotifyService {
     return this.getInfo(`albums/${id}`);
   }
 
+  // getSeveralAlbums(ids: string) {
+  //   return this.getInfo(`search?q=${query}&type=album&limit=8`).pipe(map((data: any) => data.albums.items));
+  // }
+
   getTopTracks(v: string) {
     return this.getInfo(`artists/${v}/top-tracks?country=us`);
   }
+
+
+
+ 
 
 }

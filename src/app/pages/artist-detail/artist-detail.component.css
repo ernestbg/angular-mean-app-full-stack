@@ -1,3 +1,24 @@
 .containerArtist{
     background-color: black;
 }
+
+.artist-name{
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.padding{
+    padding: 10px;
+}
+
+.margin-top{
+    margin-top: 80px;
+  
+}
+
+.hr-styles{
+    
+    margin-bottom: 80px;
+  
+}
+

@@ -21,8 +21,8 @@
 </div>
 
 <div class="row el-element-overlay" *ngIf="artists.length > 0">
-    <div class="col-lg-3 col-md-6 animated fadeIn fast" *ngFor="let artist of artists">
-      <div class="card cardArtist">
+    <div class="col-lg-2 col-md-6 animated fadeIn fast" *ngFor="let artist of artists">
+      <div class="card cardArtist" *ngIf="artist.images[0].url" >
         <div class="el-card-item">
           <div class="el-card-avatar el-overlay-1 cardArtistAvatar"> <img [src]="artist.images[0].url" alt="artist" />
             <div class="el-overlay">
@@ -75,7 +75,7 @@
             </div>
         </div>
     </div>
-    <div class="col-4">
+    <!-- <div class="col-4">
         <div class="card">
             <div class="card-body">
                 <h3>Songs</h3>
@@ -129,4 +129,4 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->

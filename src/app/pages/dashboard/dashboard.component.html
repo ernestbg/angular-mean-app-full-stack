@@ -1,8 +1,9 @@
-<div class="row el-element-overlay">
-  <div class="col-lg-3 col-md-6 animated fadeIn fast" *ngFor="let artist of artists">
-    <div class="card cardArtist">
+<h4 class="title" *ngIf="artists.length != 0">Artistas recomendados</h4>
+<div class="row el-element-overlay "  >
+  <div class="col-lg-2 col-md-6 animated fadeIn fast" *ngFor="let artist of artists" >
+    <div class="card cardArtist" *ngIf="artists.length != 0 && artist.images[0].url" >
       <div class="el-card-item">
-        <div class="el-card-avatar el-overlay-1 cardArtistAvatar"> <img [src]="artist.images[0].url" alt="artist" />
+        <div class="el-card-avatar el-overlay-1 cardArtistAvatar"> <img class="cardImg" [src]="artist.images[0].url" alt="artist" />
           <div class="el-overlay">
             <ul class="el-info">
               <li>
@@ -14,7 +15,33 @@
           </div>
         </div>
         <div class="el-card-content">
-          <h3 class="box-title">{{artist.name}}</h3> <small>{{capitalizeFirstLetter(artist.type)}}</small>
+          <h3 class="box-title text-overwrap padding">{{artist.name}}</h3> <small>{{capitalizeFirstLetter(artist.type)}}</small>
+          <br />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<h4 class="title">New releases</h4>
+<div class="row el-element-overlay">
+  <div class="col-lg-2 col-md-6 animated fadeIn fast" *ngFor="let album of newReleases">
+    <div class="card cardArtist">
+      <div class="el-card-item">
+        <div class="el-card-avatar el-overlay-1 cardArtistAvatar"> <img [src]="album.images[0].url" alt="artist" />
+          <div class="el-overlay">
+            <ul class="el-info">
+              <li>
+                <a class="btn default btn-outline image-popup-vertical-fit" (click)="goAlbumDetail(album.id)">
+                  <i class="icon-magnifier"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="el-card-content">
+          <h3 class="box-title text-overwrap padding">{{album.name}}</h3> <small>{{capitalizeFirstLetter(album.artists[0].name)}}</small>
           <br />
         </div>
       </div>

@@ -8,6 +8,32 @@
 .cardArtistAvatar {
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+   
+    
+
+}
+
+.cardImg{
+    min-height: 180px;
+    max-height: 185px;
+}
+
+.text-overwrap{
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.padding{
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.title{
+
+    font-size: 23px;
+    font-weight: bold;
+    margin-bottom: 35px;
 
 }
 
